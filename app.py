@@ -17,11 +17,14 @@ def index():
 
 @app.route("/scrape")
 def scraper():
-    listings_data = mongo.db.listings
+    listings = mongo.db.listings
     listings_data = scrape_mars.scrape()
     print(listings_data)
-    listings_data.update({}, listings_data, upsert=True)
+    listings.update({}, listings_data, upsert=True)
     return redirect("/", code=302)
+
+
+    
 
 
 if __name__ == "__main__":

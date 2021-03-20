@@ -2,6 +2,7 @@ from splinter import Browser
 from bs4 import BeautifulSoup
 import pandas as pd
 import datetime as dt
+import time
 from webdriver_manager.chrome import ChromeDriverManager
 
 
@@ -80,9 +81,9 @@ def scrape():
     url_space_facts = 'https://space-facts.com/mars/'
     url_hemi = 'https://marshemispheres.com/'
     head, text = news(url_nasa)
-    hemisphere = hemisphere(url_hemi)
+    hemispheres = hemisphere(url_hemi)
     space_table = space_facts(url_space_facts)
-    feature_image = feature_image(url_feature)
+    featured_image = feature_image(url_feature)
     
     
     print(head)
@@ -90,9 +91,9 @@ def scrape():
     
     listings['heading'] = head
     listings['text'] = text
-    listings['feature_image'] = feature_image
+    listings['feature_image'] = featured_image
     listings['table'] = space_table
-    listings['hemisphere'] = hemisphere
+    listings['hemisphere'] = hemispheres
     
     
     
