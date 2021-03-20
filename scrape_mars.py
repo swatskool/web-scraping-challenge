@@ -1,5 +1,8 @@
 from splinter import Browser
 from bs4 import BeautifulSoup
+import pandas as pd
+import datetime as dt
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 def init_browser():
@@ -8,6 +11,7 @@ def init_browser():
 
 
 def news(url_nasa):
+    browser = init_browser()
     browser.visit(url_nasa)
     time.sleep(2)
     html = browser.html
@@ -31,6 +35,7 @@ def news(url_nasa):
                 print('<<<<<<<<<<<<<<<<<<<')
         return(news_title,news_para)
 def feature_image(url_feature):
+    browser = init_browser()
     browser.visit(url_feature)
     browser.find_by_css('img.BaseImage').click()
     html=browser.html
@@ -39,6 +44,7 @@ def feature_image(url_feature):
     return(feature_url)
 
 def space_facts(url_space_facts):
+    browser = init_browser()
     browser.visit(url_space_facts)
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
@@ -46,6 +52,7 @@ def space_facts(url_space_facts):
     return html_tables
 
 def hemisphere(url_hemi):
+    browser = init_browser()
     browser.visit(url_hemi)
     hemispheres = []
     links = browser.find_by_css("a.product-item img")
