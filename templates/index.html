@@ -25,25 +25,44 @@
           <h2> Latest Mars News</h2>
           <h3><strong>{{listings['heading'][0] | safe}} </h3>
           <h4>{{listings.text[0] | safe}}</h4>
-        <div class="col-md-10">
-          <h2>
-            <strong>  Featured Mars image
-              <img src="{{listings.feature_image}}">
-              <a href="{{listings.feature_image}}">Link to the image</a>
-          </h2>
-
         </div>
+        <div class="row">
+          <div class="col-md-8">
+              <h2>
+                <strong>  Featured Mars Image</strong>
+                  <div class = "row">
+                  <img src="{{listings.feature_image}}" width = "90% ">
+                </div>
+              </h2>
 
-
-
-        
-          <h3>Mars Facts</h3>
-            
-
-          <div class = "col-md-10 border">{{listings.table | safe}} table here</div>
+          </div>
+          
+          <div class = "col-md-4">
+            <h2><strong>Mars Facts</strong></h2>
+            <div class="row">
+              {{listings.table | safe}} 
+            </div>
+          </div>  
         </div>
-      </div>
-
+        <div class="row">
+          <div class="col-md-6">
+            {{listings.hemisphere[0]}}
+          </div>  
+          <div class="col-md-6">
+            {{listings.hemisphere[1]}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            {{listings.hemisphere[2]}}
+          </div>  
+          <div class="col-md-6">
+            {{listings.hemisphere[3]}}
+          </div>
+        </div>
+          
+          
+      
 
 
     </div>

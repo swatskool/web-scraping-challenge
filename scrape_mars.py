@@ -50,7 +50,8 @@ def space_facts(url_space_facts):
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
     html_tables = pd.read_html(url_space_facts)
-    return html_tables
+    df = pd.DataFrame(html_tables[0])
+    return df.to_html()
 
 def hemisphere(url_hemi):
     browser = init_browser()
