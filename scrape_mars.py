@@ -45,20 +45,20 @@ def space_facts(url_space_facts):
     html_tables = pd.read_html(url_space_facts)
     return html_tables
 
-def hemisphers(url_hemi):
+def hemisphere(url_hemi):
     browser.visit(url_hemi)
     hemispheres = []
     links = browser.find_by_css("a.product-item img")
     for each_link in range(len(links)):
-    print(each_link)
-    hemis_dict = {}
-    browser.find_by_css('a.product-item img')[each_link].click()
-    sample = browser.links.find_by_text('Sample').first
-    print(sample)
-    hemis_dict['url'] = sample['href']
-    hemis_dict['title'] = browser.find_by_css('h2.title').text
-    hemispheres.append(hemis_dict)
-    browser.back()
+        print(each_link)
+        hemis_dict = {}
+        browser.find_by_css('a.product-item img')[each_link].click()
+        sample = browser.links.find_by_text('Sample').first
+        print(sample)
+        hemis_dict['url'] = sample['href']
+        hemis_dict['title'] = browser.find_by_css('h2.title').text
+        hemispheres.append(hemis_dict)
+        browser.back()
     return hemispheres
 
 
@@ -73,12 +73,13 @@ def scrape():
     url_space_facts = 'https://space-facts.com/mars/'
     url_hemi = 'https://marshemispheres.com/'
     head, text = news(url_nasa)
-    hemisphere = hemisphers(url_hemi)
+    hemisphere = hemisphere(url_hemi)
     space_table = space_facts(url_space_facts)
     feature_image = feature_image(url_feature)
     
     
-    
+    print(head)
+    print('I am here')
     
     listings['heading'] = head
     listings['text'] = text
