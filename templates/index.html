@@ -17,16 +17,30 @@
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
     </div>
 
-    <!-- Craigslist Listings -->
+  
     <div class="container">
       <div class="row" id="mars-listings">
-        <div class="col-md-6">
+        <div class="col-md-12">
           
-          <h3> Latest Mars News</h3>
-          <h4 class="heading">{{listings.heading}} 
-            {{listings.text}}</h4>
+          <h2> Latest Mars News</h2>
+          <h3><strong>{{listings['heading'][0] | safe}} </h3>
+          <h4>{{listings.text[0] | safe}}</h4>
+        <div class="col-md-10">
+          <h2>
+            <strong>  Featured Mars image
+              <img src="{{listings.feature_image}}">
+              <a href="{{listings.feature_image}}">Link to the image</a>
+          </h2>
 
-          <div class = "col-md-6">{{listings.table}} table here</div>
+        </div>
+
+
+
+        
+          <h3>Mars Facts</h3>
+            
+
+          <div class = "col-md-10 border">{{listings.table | safe}} table here</div>
         </div>
       </div>
 

@@ -41,7 +41,7 @@ def feature_image(url_feature):
     browser.find_by_css('img.BaseImage').click()
     html=browser.html
     soup = BeautifulSoup(html, 'html.parser')
-    feature_url = soup.find_all('a',class_= 'BaseButton')[0]['href']
+    feature_url = soup.find_all('img', class_= 'BaseImage')[0]['src']
     return(feature_url)
 
 def space_facts(url_space_facts):
@@ -92,7 +92,7 @@ def scrape():
     listings['heading'] = head
     listings['text'] = text
     listings['feature_image'] = featured_image
-    listings['table'] = space_table
+    listings['table'] = space_table[0].to_html()
     listings['hemisphere'] = hemispheres
     
     
