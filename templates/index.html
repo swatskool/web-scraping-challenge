@@ -40,24 +40,35 @@
           <div class = "col-md-4">
             <h2><strong>Mars Facts</strong></h2>
             <div class="row">
-              {{listings.table | safe}} 
+              <table class = "table">
+              {{listings.table | safe}}
+            </table> 
             </div>
           </div>  
         </div>
         <div class="row">
           <div class="col-md-6">
-            {{listings.hemisphere[0]}}
+            <img class="rounded float-left" src = "{{listings.hemisphere[3]['url']}}" width ="100%">
+            Valles Marineris Hemisphere Enhanced
+
           </div>  
           <div class="col-md-6">
-            {{listings.hemisphere[1]}}
+            <img class="rounded float-right" src="{{listings.hemisphere[0]['url']}}" width = "100%">
+            Cereberus Hemisphere Enhanced
+
           </div>
         </div>
+        <div class="row"></div>
         <div class="row">
           <div class="col-md-6">
-            {{listings.hemisphere[2]}}
+            <img class="rounded float-left" src = "{{listings.hemisphere[1]['url']}}" width = "100%">
+            Schiaparelli Hemisphere Enhanced
+
+
           </div>  
           <div class="col-md-6">
-            {{listings.hemisphere[3]}}
+            <img class="rounded float-right" src = "{{listings.hemisphere[2]['url']}}" width = "100%">
+             Syritis Major Hemisphere Enhanced 
           </div>
         </div>
           
