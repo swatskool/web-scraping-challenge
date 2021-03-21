@@ -14,7 +14,7 @@ def init_browser():
 def news(url_nasa):
     browser = init_browser()
     browser.visit(url_nasa)
-    time.sleep(2)
+    time.sleep(1)
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
     news_title = []
@@ -50,8 +50,13 @@ def space_facts(url_space_facts):
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
     html_tables = pd.read_html(url_space_facts)
-    df = pd.DataFrame(html_tables[0])
-    return df.to_html()
+    df = html_tables[2]
+    df.rename(columns={0: ' ', 1: 'Mars'}, inplace = True) 
+    df.reset_index(drop=True, inplace=True)
+    table_str = df.to_html()
+    table_str.replace('class="dataframe"', 'class="table table-striped"')
+    table_str.replace('\n','')
+    return table_str
 
 def hemisphere(url_hemi):
     browser = init_browser()
@@ -93,7 +98,7 @@ def scrape():
     listings['heading'] = head
     listings['text'] = text
     listings['feature_image'] = featured_image
-    listings['table'] = space_table[0].to_html()
+    listings['table'] = space_table
     listings['hemisphere'] = hemispheres
     
     
